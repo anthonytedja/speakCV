@@ -6,9 +6,7 @@
 
 ## Setup
 
-Visit our website and click the download button to get the zip file.
-
-[![Preview](assets/img/download.jpg)](https://anthonytedja.github.io/speakCV/)
+Visit our website and click the download button to download the zip file.
 
 Add Setup Instruction and images and ... here
 
@@ -20,11 +18,11 @@ Throughout our zoom university journey, our team has noticed that we often forge
 
 ### :hammer: The Process
 
-The design began with @anthonytedja developing the web page with bootstrap after discussing how our software will operate with the other developers.
+The design began with [@anthonytedja](https://github.com/anthonytedja) developing the web page with bootstrap after discussing how our software will operate with the other developers.
 
-@raghavst
-@kevshinXP
-@hani64
+[@raghavst](https://github.com/raghavst)
+[@kevshinXP](https://github.com/kevshinXP)
+[@hani64](https://github.com/hani64)
 
 ... add more brief details on how we built it ...
 
