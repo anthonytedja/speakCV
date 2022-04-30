@@ -54,3 +54,4 @@ dependencies:
     - imutils==0.5.4
     - pyvirtualcam==0.9.1
     - scipy==1.8.0
+    - pyautogui==0.9.53
