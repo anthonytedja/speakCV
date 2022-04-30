@@ -45,5 +45,3 @@ The design began with @anthonytedja developing the web page with bootstrap after
 - Add
 - Features
 - Here
-
-### 
