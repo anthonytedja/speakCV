@@ -30,100 +30,94 @@ def mouth_aspect_ratio(mouth):
 	# return the mouth aspect ratio
 	return mar
 
-# construct the argument parse and parse the arguments
-ap = argparse.ArgumentParser()
-ap.add_argument("-p", "--shape-predictor", required=False, default='shape_predictor_68_face_landmarks.dat',
-	help="path to facial landmark predictor")
-ap.add_argument("-w", "--webcam", type=int, default=0,
-	help="index of webcam on system")
-args = vars(ap.parse_args())
-
 # define one constants, for mouth aspect ratio to indicate open mouth
 MOUTH_AR_THRESH = 0.68
 
-# initialize dlib's face detector (HOG-based) and then create
-# the facial landmark predictor
-print("[INFO] loading facial landmark predictor...")
-detector = dlib.get_frontal_face_detector()
-predictor = dlib.shape_predictor(args["shape_predictor"])
+def start(delay=4, hasDebug=True):
+	# initialize dlib's face detector (HOG-based) and then create
+	# the facial landmark predictor
+	print("[INFO] loading facial landmark predictor...")
+	detector = dlib.get_frontal_face_detector()
+	predictor = dlib.shape_predictor('shape_predictor_68_face_landmarks.dat')
 
-# grab the indexes of the facial landmarks for the mouth
-(mStart, mEnd) = (49, 68)
+	# grab the indexes of the facial landmarks for the mouth
+	(mStart, mEnd) = (49, 68)
 
-# start the video stream thread
-print("[INFO] starting video stream thread...")
-vs = VideoStream(src=args["webcam"]).start()
-time.sleep(1.0)
+	# start the video stream thread
+	print("[INFO] starting video stream thread...")
+	vs = VideoStream(src=0).start()
+	time.sleep(1.0)
 
-frame_width = 640
-frame_height = 360
+	frame_width = 640
+	frame_height = 360
 
-# Define the codec and create VideoWriter object.The output is stored in 'outpy.avi' file.
-out = cv2.VideoWriter('outpy.avi',cv2.VideoWriter_fourcc('M','J','P','G'), 30, (frame_width,frame_height))
-time.sleep(1.0)  
-keyDown = False 
-frames_elapsed = 0     
-with pyvirtualcam.Camera(width=640, height=480, fps=30) as vcam:
+	keyDown = False 
+	frames_elapsed = 0     
+	with pyvirtualcam.Camera(width=640, height=480, fps=30) as vcam:
 
-	# loop over frames from the video stream
-	while True:
-		# grab the frame from the threaded video file stream, resize
-		# it, and convert it to grayscale
-		# channels)
-		frame = vs.read()
-		virtual_frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
-		vcam.send(virtual_frame)
-		frame = imutils.resize(frame, width=640)
-		gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)	
-		# detect faces in the grayscale frame
-		rects = detector(gray, 0)
+		# loop over frames from the video stream
+		while True:
+			# grab the frame from the threaded video file stream, resize
+			# it, and convert it to grayscale
+			# channels)
+			frame = vs.read()
+			virtual_frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
+			vcam.send(virtual_frame)
+			frame = imutils.resize(frame, width=640)
+			gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)	
+			# detect faces in the grayscale frame
+			rects = detector(gray, 0)
 
-		# loop over the face detections
-		for rect in rects:
-			# determine the facial landmarks for the face region, then
-			# convert the facial landmark (x, y)-coordinates to a NumPy
-			# array
-			shape = predictor(gray, rect)
-			shape = face_utils.shape_to_np(shape)
+			# loop over the face detections
+			for rect in rects:
+				# determine the facial landmarks for the face region, then
+				# convert the facial landmark (x, y)-coordinates to a NumPy
+				# array
+				shape = predictor(gray, rect)
+				shape = face_utils.shape_to_np(shape)
 
-			# extract the mouth coordinates, then use the
-			# coordinates to compute the mouth aspect ratio
-			mouth = shape[mStart:mEnd]
+				# extract the mouth coordinates, then use the
+				# coordinates to compute the mouth aspect ratio
+				mouth = shape[mStart:mEnd]
 
-			mouthMAR = mouth_aspect_ratio(mouth)
-			mar = mouthMAR
-			# compute the convex hull for the mouth, th en
-			# visualize the mouth
-			mouthHull = cv2.convexHull(mouth)
+				mouthMAR = mouth_aspect_ratio(mouth)
+				mar = mouthMAR
+				# compute the convex hull for the mouth, th en
+				# visualize the mouth
+				mouthHull = cv2.convexHull(mouth)
+				
+				for i in range(0,len(shape)):
+					cv2.circle(frame, shape[i], radius=0, color=(255, 0, 0), thickness=2)
+				cv2.drawContours(frame, [mouthHull], -1, (0, 255, 0), 1)
+				cv2.putText(frame, "MAR: {:.2f}".format(mar), (30, 30), cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 0, 255), 2)
+
+				# Draw text if mouth is open
+				if mar > MOUTH_AR_THRESH:
+					cv2.putText(frame, "Mouth is Open!", (30,60),
+					cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0,0,255), 2)
+					if not keyDown:
+						keyDown = True  
+						pyautogui.keyDown('space')  
+						print("space down - unmuted") 
+					frames_elapsed = 0 
+				elif keyDown and frames_elapsed >= delay*30:
+					keyDown = False
+					pyautogui.keyUp('space') 
+					print("space up - muted")
+					frames_elapsed  = 0 
+				frames_elapsed += 1
+			# show the frame
+			if hasDebug:
+				cv2.imshow("Frame", frame)
+			key = cv2.waitKey(1) & 0xFF
 			
-			cv2.drawContours(frame, [mouthHull], -1, (0, 255, 0), 1)
-			cv2.putText(frame, "MAR: {:.2f}".format(mar), (30, 30), cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 0, 255), 2)
+			# if the `q` key was pressed, break from the loop
+			if key == ord("q"):
+				break
 
-			# Draw text if mouth is open
-			if mar > MOUTH_AR_THRESH:
-				cv2.putText(frame, "Mouth is Open!", (30,60),
-				cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0,0,255), 2)
-				if not keyDown:
-					keyDown = True  
-					pyautogui.keyDown('space')  
-					print("space down") 
-				frames_elapsed = 0 
-			elif keyDown and frames_elapsed >= 120:
-				keyDown = False
-				pyautogui.keyUp('space') 
-				print("space up")
-				frames_elapsed  = 0 
-			frames_elapsed += 1
-		# Write the frame into the file 'output.avi'
-		out.write(frame)
-		# show the frame
-		cv2.imshow("Frame", frame)
-		key = cv2.waitKey(1) & 0xFF
-		
-		# if the `q` key was pressed, break from the loop
-		if key == ord("q"):
-			break
+	# do a bit of cleanup
+	cv2.destroyAllWindows()
+	vs.stop()
 
-# do a bit of cleanup
-cv2.destroyAllWindows()
-vs.stop()
+if __name__ == "__main__":
+	start()
