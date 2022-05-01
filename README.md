@@ -2,7 +2,7 @@
 
 [![Preview](assets/img/thumbnail.jpg)](https://anthonytedja.github.io/speakCV/)
 
-> SpeakCV is a desktop client that automates video call actions through your webcam.
+> SpeakCV is a desktop client that automates video call actions with OpenCV.
 
 ## Setup
 
