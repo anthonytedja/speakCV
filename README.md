@@ -8,29 +8,36 @@
 
 Visit our [website](https://anthonytedja.github.io/speakCV/) and click the download button to download the zip file containing SpeakCV.
 
-#### Installing Python
+### Installing Python
+
 You will need [Python](https://www.python.org/downloads) (> version 3.9.12). To check whether it's already installed on a UNIX-like system, open up a terminal window (e.g. Terminal on OS X) and type `python --version` at the command prompt. For example, you should see something similar to the following:
-```
+
+```bash
 $ python --version
 Python 3.9.12
 ```
-#### Installing OBS
+
+### Installing OBS
+
 Ensure you have [OBS](https://obsproject.com/download) installed on your PC to ensure that you can use your webcam in Zoom while using SpeakCV.
 
-#### Installing Anaconda
-You will need  [Anaconda](https://www.anaconda.com/) in order to install the necessary dependencies SpeakCV relies on to function properly. 
+### Installing Anaconda
 
-#### Installing Dependencies
-1. Create the environment from the `environment.yml` file:
-```
+You will need  [Anaconda](https://www.anaconda.com/) in order to install the necessary dependencies SpeakCV relies on to function properly.
+
+### Installing Dependencies
+
+Create the environment from the `environment.yml` file:
+
+```bash
 conda env create -f environment.yml
 ```
-2. Activate the new environment
-```
+
+Activate the new environment:
+
+```bash
 conda activate deerhack
 ```
-
-
 
 ## Documentation
 
@@ -41,7 +48,7 @@ Throughout our Zoom university journey, our team has noticed that we often forge
 ### :hammer: The Team
 
 [@anthonytedja](https://github.com/anthonytedja)  
-[@raghavst](https://github.com/raghavst)   
+[@raghavst](https://github.com/raghavst)
 [@kevshinXP](https://github.com/kevshinXP)  
 [@hani64](https://github.com/hani64)  
 
@@ -51,9 +58,7 @@ We used Dlib's HOG-based face detector to map out landmark point on a users face
 
 For SpeakCV we are interested in the 19 landmark points used to map out a users mouth. We used these 19 landmark points to calculate the aspect ratio of a user's mouth at any given time. We determined that if the aspect ratio of a users if above a certain threshold, we can reasonably assume that user is speaking. If a user speaking is detected, SpeakCV unmutes a user during their zoom call. When the user closes there mouth again SpeakCV mutes the user back.
 
-We used Tkinter to create a user-friendly interface that can be used to launch SpeakCV. The interface gives the user the option to see a debug window which shows the detected facial feature in real time using the power of OpenCV. The interface also allows the user to change the default mute delay from 5 seconds to whatever suits them.   
-
-
+We used Tkinter to create a user-friendly interface that can be used to launch SpeakCV. The interface gives the user the option to see a debug window which shows the detected facial feature in real time using the power of OpenCV. The interface also allows the user to change the default mute delay from 5 seconds to whatever suits them.
 
 ### :brain: The Takeaways
 
