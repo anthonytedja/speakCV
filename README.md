@@ -1,36 +1,59 @@
-# speakCV
+# SpeakCV
 
 [![Preview](assets/img/thumbnail.jpg)](https://anthonytedja.github.io/speakCV/)
 
-> SPEAKCV. is a desktop client that automates video call actions through your webcam.
+> SpeakCV is a desktop client that automates video call actions through your webcam.
 
 ## Setup
 
-Visit our website and click the download button to download the zip file.
+Visit our [website](https://anthonytedja.github.io/speakCV/) and click the download button to download the zip file containing SpeakCV.
 
-Add Setup Instruction and images and ... here
+#### Installing Python
+You will need [Python](https://www.python.org/downloads) (> version 3.9.12). To check whether it's already installed on a UNIX-like system, open up a terminal window (e.g. Terminal on OS X) and type `python --version` at the command prompt. For example, you should see something similar to the following:
+```
+$ python --version
+Python 3.9.12
+```
+#### Installing OBS
+Ensure you have [OBS](https://obsproject.com/download) installed on your PC to ensure that you can use your webcam in Zoom while using SpeakCV.
+
+#### Installing Anaconda
+You will need  [Anaconda](https://www.anaconda.com/) in order to install the necessary dependencies SpeakCV relies on to function properly. 
+
+#### Installing Dependencies
+1. Create the environment from the `environment.yml` file:
+```
+conda env create -f environment.yml
+```
+2. Activate the new environment
+```
+conda activate deerhack
+```
+
+
 
 ## Documentation
 
 ### :speech_balloon: The Motive
 
-Throughout our zoom university journey, our team has noticed that we often forget to unmute our mics when we talk, or forget to mute it when we don't want others to listen in. To combat this problem, we created a desktom client SPEAKCV, that uses computer vision to understand when you are talking and will automatically mute and unmute your mic for you.
+Throughout our Zoom university journey, our team has noticed that we often forget to unmute our mics when we talk, or forget to mute it when we don't want others to listen in. To combat this problem, we created a desktop client SPEAKCV, that uses computer vision to understand when you are talking and will automatically mute and unmute your mic for you.
 
-### :hammer: The Process
+### :hammer: The Team
 
-The design began with [@anthonytedja](https://github.com/anthonytedja) developing the web page with bootstrap after discussing how our software will operate with the other developers.
+[@anthonytedja](https://github.com/anthonytedja)  
+[@raghavst](https://github.com/raghavst)   
+[@kevshinXP](https://github.com/kevshinXP)  
+[@hani64](https://github.com/hani64)  
 
-[@raghavst](https://github.com/raghavst)
-[@kevshinXP](https://github.com/kevshinXP)
-[@hani64](https://github.com/hani64)
+### :wrench: How We Built It
 
-... add more brief details on how we built it ...
+We used Dlib's HOG-based face detector to map out landmark point on a users face. We used a pre-existing model to extract 68 landmark coordinates which map to contours on a users face. These landmark points can be used to map a users facial features such as there eyebrows, eyes, nose, jaw, and mouth.
 
-### :wrench: The Challenges
+For SpeakCV we are interested in the 19 landmark points used to map out a users mouth. We used these 19 landmark points to calculate the aspect ratio of a user's mouth at any given time. We determined that if the aspect ratio of a users if above a certain threshold, we can reasonably assume that user is speaking. If a user speaking is detected, SpeakCV unmutes a user during their zoom call. When the user closes there mouth again SpeakCV mutes the user back.
 
-- Issues
-- And
-- Fixes
+We used Tkinter to create a user-friendly interface that can be used to launch SpeakCV. The interface gives the user the option to see a debug window which shows the detected facial feature in real time using the power of OpenCV. The interface also allows the user to change the default mute delay from 5 seconds to whatever suits them.   
+
+
 
 ### :brain: The Takeaways
 
