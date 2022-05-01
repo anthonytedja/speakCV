@@ -57,12 +57,10 @@ We used Tkinter to create a user-friendly interface that can be used to launch S
 
 ### :brain: The Takeaways
 
-- What
-- We
-- Learnt
+How to setup and use virtual environments in Anaconda to ensure everyone could work on the code locally without issues. Another thing we learned was to use virtual video/audio to access videos/ audio from our own programs. We also learned a bit about GUI creation for Python applications.
 
 ### :star: The Features
 
-- Add
-- Features
-- Here
+- Automatic Zoom muting/unmuting based on user speech
+- Customizable mute timeout duration
+- Debug mode for developers
