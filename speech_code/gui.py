@@ -34,7 +34,7 @@ if __name__ == "__main__":
 
     frm_options = Frame(master=window, relief=FLAT, borderwidth=2)
 
-    png_logo = Image.open("./logo.png")
+    png_logo = Image.open("./logo.jpg")
     png_logo = png_logo.resize((300, 180), Image.ANTIALIAS)
     img_logo = ImageTk.PhotoImage(png_logo)
     lbl_logo = ttk.Label(master=window, text="speakCV", image=img_logo)
