@@ -27,10 +27,10 @@ You will need  [Anaconda](https://www.anaconda.com/) in order to install the nec
 
 ### Installing Dependencies
 
-Create the environment from the `environment.yml` file:
+Create the environment from the `environment.yaml` file:
 
 ```bash
-conda env create -f environment.yml
+conda env create -f environment.yaml
 ```
 
 Activate the new environment:
