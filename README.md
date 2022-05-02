@@ -12,11 +12,11 @@ Visit our [website](https://anthonytedja.github.io/speakCV/) and click the downl
 
 ### Zoom Settings
 
-Under the Audio Section, make sure to enable mute your microphone when joining a meeting or SpeakCV. will work in the opposite way.
+Under the Audio Section, make sure to enable microphone premute when joining a meeting so SpeakCV. will toggle correctly.
 
 ![Mute](assets/img/mute.jpg)
 
-Under the Keyboard Shortcuts Section, make sure to enable the global shortcut for Mute/Unmute My Audio, and have the shortcut as Alt+A to ensure SpeakCV. will work in the background.
+Under the Keyboard Shortcuts Section, make sure to enable the global shortcut for Mute/Unmute My Audio as Alt+A to ensure SpeakCV. will work in the background.
 
 ![Shortcut](assets/img/shortcut.jpg)
 
@@ -73,13 +73,13 @@ Throughout our Zoom university journey, our team noticed that we often forget to
 
 ### :wrench: How We Built It
 
-We used Dlib's HOG-based face detector to map out landmark point on a users face. We used a pre-existing model to extract 68 landmark coordinates which map to contours on a users face. These landmark points can be used to map a users facial features such as there eyebrows, eyes, nose, jaw, and mouth.
+We used Dlib's HOG-based face detector to map out landmark point on a user's face. We used a pre-existing model to extract 68 landmark coordinates which map to contours on a user's face. These landmark points can be used to map a user's facial features such as there eyebrows, eyes, nose, jaw, and mouth.
 
 ![Dots](assets/img/dots.png)
 
-For SpeakCV we are interested in the 19 landmark points used to map out a users mouth. We used these 19 landmark points to calculate the aspect ratio of a user's mouth at any given time. We determined that if the aspect ratio of a users if above a certain threshold, we can reasonably assume that user is speaking. If a user speaking is detected, SpeakCV unmutes a user during their zoom call. When the user closes there mouth again SpeakCV mutes the user back.
+For SpeakCV, we are interested in the 20 landmark points used to map out a user's mouth. We used these points to calculate the aspect ratio of a user's mouth at any given time. We determined that if the aspect ratio of a user is above a certain threshold, we can reasonably assume that user is speaking. Once this is detected, SpeakCV. unmutes a user during their zoom call. When the user closes there mouth again, SpeakCV. will mute the user.
 
-We used Tkinter to create a user-friendly interface that can be used to launch SpeakCV. The interface gives the user the option to see a debug window which shows the detected facial feature in real time using the power of OpenCV. The interface also allows the user to change the default mute delay from 5 seconds to whatever suits them.
+We used Tkinter to create a user-friendly interface that can be used to launch SpeakCV. The interface gives the user the option to see a debug window, which shows the detected facial feature in real time using OpenCV. The interface also allows the user to change the default mute delay from 5 seconds to whatever suits them.
 
 ### :star: The Features
 
@@ -89,11 +89,15 @@ We used Tkinter to create a user-friendly interface that can be used to launch S
 
 ### :brain: What we learned
 
-How to setup and use virtual environments in Anaconda to ensure everyone could work on the code locally without issues. Another thing we learned was to use virtual video/audio to access videos/ audio from our own programs. We also learned a bit about GUI creation for Python applications.
+- How to setup and use virtual environments in Anaconda to ensure the program can run locally without issues.
+- Working with virtual video/audio to access the streams from our own program.
+- GUI creation for Python applications with Tkinter.
 
 ### :heart: What's next
 
-Improve the precision of the shape recognition model, either by further adjusting the mouth aspect ratio or by tweaking the contour spots used in the algorithm for determining mouth shape. Moving the application to the Zoom app marketplace by making the application using the Zoom SDK, which requires migrating the application to C++. We can also instead use the Zoom API and move the application onto the web.
+- Improve the precision of the shape recognition model, by further adjusting the mouth aspect ratio or by tweaking the contour spots used in the algorithm for determining a user's mouth shape.
+- Moving the application to the Zoom app marketplace by making the application with the Zoom SDK, which requires migrating the application to C++.
+- Another option is to use the Zoom API and move the application onto the web.
 
 ### :hammer: The Team
 
