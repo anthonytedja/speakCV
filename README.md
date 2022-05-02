@@ -6,50 +6,66 @@
 
 ## Setup
 
-Visit our [website](https://anthonytedja.github.io/speakCV/) and click the download button to download the zip file containing SpeakCV.
+Visit our [website](https://anthonytedja.github.io/speakCV/) and click the download button to get the zip file containing SpeakCV. (you will only need the speech_code folder), or get the speech_code folder directly from this repository.
 
-### Installing Python
+![Download](assets/img/download.jpg)
 
-You will need [Python](https://www.python.org/downloads) (v3.9.12+). To check whether it's already installed on a UNIX-like system, open up a terminal window (e.g. Terminal on OS X) and type `python --version` at the command prompt. For example, you should see something similar to the following:
+### Zoom Settings
+
+Under the Audio Section, make sure to enable mute your microphone when joining a meeting or SpeakCV. will work in the opposite way.
+
+![Mute](assets/img/mute.jpg)
+
+Under the Keyboard Shortcuts Section, make sure to enable the global shortcut for Mute/Unmute My Audio, and have the shortcut as Alt+A to ensure SpeakCV. will work in the background.
+
+![Shortcut](assets/img/shortcut.jpg)
+
+### Installing OBS
+
+Ensure you have [OBS](https://obsproject.com/download) installed on your PC to use your webcam in Zoom with SpeakCV.
+
+### Installing Anaconda
+
+You will need  [Anaconda](https://www.anaconda.com/) in order to install the necessary dependencies for SpeakCV.
+
+After installing Anaconda, open up Anaconda Powershell Prompt / Anaconda Prompt for the following commands.
+
+You will need Python 3.9.12+ for SpeakCV. Check your current python version in the terminal with `python --version`
 
 ```bash
 $ python --version
 Python 3.9.12
 ```
 
-### Installing OBS
+Use the following command to install the correct version if your python version is not above 3.9.12:
 
-Ensure you have [OBS](https://obsproject.com/download) installed on your PC to ensure that you can use your webcam in Zoom while using SpeakCV.
+```bash
+conda install python=3.9.12
+```
 
-### Installing Anaconda
-
-You will need  [Anaconda](https://www.anaconda.com/) in order to install the necessary dependencies for SpeakCV.
-
-### Installing Dependencies
-
-Create the environment from the `environment.yaml` file:
+Create the environment from the `environment.yaml` file to install the dependencies:
 
 ```bash
 conda env create -f environment.yaml
 ```
 
-Activate the new environment:
+## Usage
+
+Activate the environment:
 
 ```bash
 conda activate deerhack
 ```
 
+Run the GUI:
+
+```bash
+python gui.py
+```
+
+Now you're all set to use SpeakCV. alongside Zoom!
+
 ## Documentation
-
-### :hammer: The Team
-
-[@anthonytedja](https://github.com/anthonytedja)
-
-[@raghavst](https://github.com/raghavst)
-
-[@kevshinXP](https://github.com/kevshinXP)
-
-[@hani64](https://github.com/hani64)
 
 ### :speech_balloon: Inspiration
 
@@ -58,6 +74,8 @@ Throughout our Zoom university journey, our team noticed that we often forget to
 ### :wrench: How We Built It
 
 We used Dlib's HOG-based face detector to map out landmark point on a users face. We used a pre-existing model to extract 68 landmark coordinates which map to contours on a users face. These landmark points can be used to map a users facial features such as there eyebrows, eyes, nose, jaw, and mouth.
+
+![Dots](assets/img/dots.png)
 
 For SpeakCV we are interested in the 19 landmark points used to map out a users mouth. We used these 19 landmark points to calculate the aspect ratio of a user's mouth at any given time. We determined that if the aspect ratio of a users if above a certain threshold, we can reasonably assume that user is speaking. If a user speaking is detected, SpeakCV unmutes a user during their zoom call. When the user closes there mouth again SpeakCV mutes the user back.
 
@@ -76,3 +94,13 @@ How to setup and use virtual environments in Anaconda to ensure everyone could w
 ### :heart: What's next
 
 Improve the precision of the shape recognition model, either by further adjusting the mouth aspect ratio or by tweaking the contour spots used in the algorithm for determining mouth shape. Moving the application to the Zoom app marketplace by making the application using the Zoom SDK, which requires migrating the application to C++. We can also instead use the Zoom API and move the application onto the web.
+
+### :hammer: The Team
+
+[@anthonytedja](https://github.com/anthonytedja)
+
+[@raghavst](https://github.com/raghavst)
+
+[@kevshinXP](https://github.com/kevshinXP)
+
+[@hani64](https://github.com/hani64)

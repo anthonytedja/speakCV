@@ -6,7 +6,7 @@ import threading
 import speech_detection
 
 def handle_start(delay, hasDebug):
-    print("start")
+    print("STARTING GUI...")
     speech_detection.start(delay, hasDebug)
 
 def handle_start_thread():

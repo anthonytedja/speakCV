@@ -31,11 +31,13 @@ def mouth_aspect_ratio(mouth):
 	return mar
 
 # define one constants, for mouth aspect ratio to indicate open mouth
-MOUTH_AR_THRESH = 0.68
+MOUTH_AR_THRESH = 0.80
+# MOUTH_AR_THRESH = 0.68
 
 def start(delay=4, hasDebug=True):
 	# initialize dlib's face detector (HOG-based) and then create
 	# the facial landmark predictor
+	print(f"[INFO] MOUTH AR THRESHOLD RATIO: {MOUTH_AR_THRESH}")
 	print("[INFO] loading facial landmark predictor...")
 	detector = dlib.get_frontal_face_detector()
 	predictor = dlib.shape_predictor('shape_predictor_68_face_landmarks.dat')
@@ -97,15 +99,13 @@ def start(delay=4, hasDebug=True):
 					cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0,0,255), 2)
 					if not keyDown:
 						keyDown = True  
-						with pyautogui.hold('alt'):
-                                                        pyautogui.press('a')
+						with pyautogui.hold('alt'): pyautogui.press('a')
 						print("space down - unmuted")
 					frames_elapsed = 0
 					start_time = time.time()
 				elif keyDown and frames_elapsed >= delay*30:
 					keyDown = False
-					with pyautogui.hold('alt'):
-                                                pyautogui.press('a') 
+					with pyautogui.hold('alt'): pyautogui.press('a') 
 					print("space up - muted")
 					print(time.time() - start_time)
 					frames_elapsed  = 0 
