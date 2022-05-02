@@ -101,10 +101,7 @@ We used Tkinter to create a user-friendly interface that can be used to launch S
 
 ### :hammer: The Team
 
-[@anthonytedja](https://github.com/anthonytedja)
-
-[@raghavst](https://github.com/raghavst)
-
-[@kevshinXP](https://github.com/kevshinXP)
-
-[@hani64](https://github.com/hani64)
+- [@anthonytedja](https://github.com/anthonytedja)
+- [@raghavst](https://github.com/raghavst)
+- [@kevshinXP](https://github.com/kevshinXP)
+- [@hani64](https://github.com/hani64)
