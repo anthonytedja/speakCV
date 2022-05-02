@@ -97,13 +97,17 @@ def start(delay=4, hasDebug=True):
 					cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0,0,255), 2)
 					if not keyDown:
 						keyDown = True  
-						pyautogui.keyDown('space')  
-						print("space down - unmuted") 
-					frames_elapsed = 0 
+						with pyautogui.hold('alt'):
+                                                        pyautogui.press('a')
+						print("space down - unmuted")
+					frames_elapsed = 0
+					start_time = time.time()
 				elif keyDown and frames_elapsed >= delay*30:
 					keyDown = False
-					pyautogui.keyUp('space') 
+					with pyautogui.hold('alt'):
+                                                pyautogui.press('a') 
 					print("space up - muted")
+					print(time.time() - start_time)
 					frames_elapsed  = 0 
 				frames_elapsed += 1
 			# show the frame
