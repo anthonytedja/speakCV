@@ -67,7 +67,7 @@ Now you're all set to use SpeakCV. alongside Zoom!
 
 ## Documentation
 
-### :speech_balloon: Inspiration
+### :thought_balloon: Inspiration
 
 Throughout our Zoom university journey, our team noticed that we often forget to unmute our mics when we talk, or forget to mute it when we don't want others to listen in. To combat this problem, we created SpeakCV, a desktop client that automatically mutes and unmutes your mic for you using computer vision to understand when you are talking.
 
@@ -98,6 +98,12 @@ We used Tkinter to create a user-friendly interface that can be used to launch S
 - Improve the precision of the shape recognition model, by further adjusting the mouth aspect ratio or by tweaking the contour spots used in the algorithm for determining a user's mouth shape.
 - Moving the application to the Zoom app marketplace by making the application with the Zoom SDK, which requires migrating the application to C++.
 - Another option is to use the Zoom API and move the application onto the web.
+
+### :link: The Links
+
+- [Website](https://anthonytedja.github.io/speakCV/)
+- [Devpost](https://devpost.com/software/speakcv)
+- [Demo Video](https://www.youtube.com/watch?v=s5Hf1rLZhns)
 
 ### :hammer: The Team
 
