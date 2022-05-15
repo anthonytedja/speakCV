@@ -75,7 +75,7 @@ Throughout our Zoom university journey, our team noticed that we often forget to
 
 We used Dlib's HOG-based face detector to map out landmark point on a user's face. We used a pre-existing model to extract 68 landmark coordinates which map to contours on a user's face. These landmark points can be used to map a user's facial features such as there eyebrows, eyes, nose, jaw, and mouth.
 
-![Dots](assets/img/dots.png)
+![Dots](assets/img/dots.jpg)
 
 For SpeakCV, we are interested in the 20 landmark points used to map out a user's mouth. We used these points to calculate the aspect ratio of a user's mouth at any given time. We determined that if the aspect ratio of a user is above a certain threshold, we can reasonably assume that user is speaking. Once this is detected, SpeakCV. unmutes a user during their zoom call. When the user closes there mouth again, SpeakCV. will mute the user.
 
