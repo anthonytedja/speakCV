@@ -17,12 +17,13 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Catamaran:100,200,300,400,500,600,700,800,900&amp;display=swap">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i&amp;display=swap">
     <link rel="stylesheet" href="assets/fonts/fontawesome-all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
     <link rel="stylesheet" href="assets/css/Responsive-Youtube-Embed.css">
     <link rel="stylesheet" href="assets/css/styles.css">
 </head>
 
 <body>
-    <nav class="navbar navbar-dark navbar-expand-lg fixed-top bg-dark navbar-custom" style="background-color: rgba(0,0,0,0) !important;">
+    <nav class="navbar navbar-dark navbar-expand-lg fixed-top bg-dark navbar-custom" data-aos="fade-down" data-aos-duration="600" data-aos-delay="100" data-aos-once="true" style="background-color: rgba(0,0,0,0) !important;">
         <div class="container"><a class="navbar-brand" id="homepage" href="#" style="color: black;"><img src="assets/img/android-chrome-512x512.png" style="max-height: 40px;margin-right: 15px;">SpeakCV.</a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navbarResponsive" style="color: var(--bs-gray-dark);border-color: var(--bs-gray-dark);"><span class="visually-hidden" style="color: var(--bs-gray-dark);border-color: var(--bs-gray-dark);">Toggle navigation</span><span class="navbar-toggler-icon" style="color: var(--bs-gray-dark);border-color: var(--bs-gray-dark);filter: brightness(10%);"></span></button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ms-auto" style="flex-direction: row;align-items: center;justify-content: center;">
@@ -38,15 +39,15 @@
     <header class="masthead" style="min-height: 100vh;background: var(--bs-light);display: flex;align-items: center;justify-content: center;">
         <div class="masthead-content">
             <div class="container h-100">
-                <h1 class="masthead-heading mb-0">speak your&nbsp;<span style="color: var(--bs-purple);">mind.</span></h1>
-                <h2 class="masthead-subheading mb-0">save your&nbsp;<span style="color: var(--bs-purple);">thoughts.</span></h2>
-                <p>SPEAKCV. is a desktop client that automates video call actions with OpenCV.</p><a class="btn btn-primary btn-xl rounded-pill mt-2" role="button" href="https://github.com/anthonytedja/speakCV/archive/refs/heads/master.zip" style="text-transform: none;background: var(--bs-purple);box-shadow: none;border: none;" download="">DOWNLOAD</a>
+                <h1 data-aos="fade-up" data-aos-duration="500" data-aos-delay="100" data-aos-once="true" class="masthead-heading mb-0">speak your&nbsp;<span style="color: var(--bs-purple);">mind.</span></h1>
+                <h2 data-aos="fade-up" data-aos-duration="500" data-aos-delay="200" data-aos-once="true" class="masthead-subheading mb-0">save your&nbsp;<span style="color: var(--bs-purple);">thoughts.</span></h2>
+                <p data-aos="fade-up" data-aos-duration="500" data-aos-delay="400" data-aos-once="true">SPEAKCV. is a desktop client that automates video call actions with OpenCV.</p><a class="btn btn-primary btn-xl rounded-pill mt-2" role="button" data-aos="fade-up" data-aos-duration="800" data-aos-offset="50" data-aos-delay="700" data-aos-once="true" href="https://github.com/anthonytedja/speakCV/archive/refs/heads/master.zip" style="text-transform: none;background: var(--bs-purple);box-shadow: none;border: none;" download="">DOWNLOAD</a>
             </div>
         </div>
-        <div class="bg-circle-1 bg-circle" style="bottom: calc(50% - 90rem);left: calc(50% - 110rem);"></div>
-        <div class="bg-circle-2 bg-circle" style="top: calc(80% - 70rem);right: calc(40% - 60rem);"></div>
-        <div class="bg-circle-3 bg-circle"></div>
-        <div class="bg-circle-4 bg-circle" style="top: calc(40% - 40rem);right: calc(50% - 10rem);"></div>
+        <div data-aos="fade-right" data-aos-duration="800" data-aos-delay="500" data-aos-once="true" class="bg-circle-1 bg-circle" style="bottom: calc(50% - 90rem);left: calc(50% - 110rem);"></div>
+        <div data-aos="fade-left" data-aos-duration="800" data-aos-delay="500" data-aos-once="true" class="bg-circle-2 bg-circle" style="top: calc(80% - 70rem);right: calc(40% - 60rem);"></div>
+        <div data-aos="fade-up" data-aos-duration="800" data-aos-delay="500" data-aos-once="true" class="bg-circle-3 bg-circle"></div>
+        <div data-aos="fade-down" data-aos-duration="800" data-aos-delay="500" data-aos-once="true" class="bg-circle-4 bg-circle" style="top: calc(40% - 40rem);right: calc(50% - 10rem);"></div>
     </header>
     <section id="about" style="/*background: var(--bs-light);*/min-height: 100vh;">				<div class="caption v-middle text-center">
 					<h1 class="cd-headline clip">
@@ -178,6 +179,8 @@
     </footer>
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/js/bs-init.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
     <script src="assets/js/scripts.js"></script>
 </body>
 
